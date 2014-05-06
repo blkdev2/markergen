@@ -1,6 +1,15 @@
 import simple
 
 def draw_marker(pdf, pattern, position, size, border_width):
+    """Draws an ARToolkitPlus marker into an FPDF document.
+    
+    :param pdf: The FPDF document.
+    :param pattern: The pattern object (e.g. a simple.SimplePattern)
+    :param size: Tuple containing the (width, height) of the marker, not
+      including the border.
+    :param border_width: Width of the white border region to be drawn around
+      the outside of the marker.
+    """
     w, h = size
     w_b = border_width
     w_c = w / (pattern.shape[0] + 1)
@@ -18,13 +27,13 @@ def draw_marker(pdf, pattern, position, size, border_width):
              size[0],
              size[1],
              'FD')
-    draw_pattern(pdf,
+    _draw_pattern(pdf,
                  pattern,
                  [p + w_c for p in position],
                  [s - w_c * 2 for s in size])
                  
 
-def draw_pattern(pdf, pattern, position, size):
+def _draw_pattern(pdf, pattern, position, size):
     x0, y0 = position
     w, h = size
     w_c, h_c = [s / n for s, n in zip(size, pattern.shape)]

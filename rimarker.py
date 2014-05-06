@@ -2,23 +2,32 @@ marker_black = (0.20, 0.20, 0.20)
 marker_white = (0.98, 0.98, 0.98)
 
 def draw_marker(ri, pattern, position, size, border_width):
+    """Draws a marker to a RenderMan interface stream.
+    
+    :param ri: cgkit RI interface object.
+    :param pattern: The pattern object (e.g. a simple.SimplePattern)
+    :param size: Tuple containing the (width, height) of the marker, not
+      including the border.
+    :param border_width: Width of the white border region to be drawn around
+      the outside of the marker.
+    """
     x0, y0 = position
     w, h = size
     w_b = border_width
     w_c = w / (pattern.shape[0] + 1)
     h_c = h / (pattern.shape[1] + 1)
     ri.Color(marker_white)
-    draw_border(ri,
-                (x0 - w_b, y0 - w_b),
-                (w + w_b*2, h + w_b*2),
-                (w_b, w_b))    
+    _draw_border(ri,
+                 (x0 - w_b, y0 - w_b),
+                 (w + w_b*2, h + w_b*2),
+                 (w_b, w_b))    
     ri.Color(marker_black)
-    draw_border(ri, position, size, (w_c, h_c))
-    draw_pattern(ri, pattern,
-                 (x0 + w_c, y0 + h_c),
-                 (w - w_c*2, h - h_c*2))
+    _draw_border(ri, position, size, (w_c, h_c))
+    _draw_pattern(ri, pattern,
+                  (x0 + w_c, y0 + h_c),
+                  (w - w_c*2, h - h_c*2))
 
-def draw_border(ri, position, size, border_size):
+def _draw_border(ri, position, size, border_size):
     x0, y0 = position
     w, h = size
     w_b, h_b = border_size
@@ -37,7 +46,7 @@ def draw_border(ri, position, size, border_size):
     rect(x0 + w_b, y0 + h - h_b, w - w_b, h_b)
     
 
-def draw_pattern(ri, pattern, position, size):
+def _draw_pattern(ri, pattern, position, size):
     x0, y0 = position
     w, h = size
     w_b, h_b = w / pattern.shape[0], h / pattern.shape[1]

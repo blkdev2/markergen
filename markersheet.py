@@ -3,6 +3,10 @@ import simple
 import pdfmarker
 
 def thirty_simple_marker_sheet(start_id):
+    """Create a PDF with 30 ARToolkitPlus 'simple' markers on a page.
+    
+    :param start_id: The ID number of the first marker on the sheet.
+    """
     pdf = FPDF(unit="mm", format="letter")
     pdf.add_page()
     def draw_row(start_id, start_position):
