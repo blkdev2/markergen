@@ -5,6 +5,8 @@ def draw_marker(pdf, pattern, position, size, border_width):
     
     :param pdf: The FPDF document.
     :param pattern: The pattern object (e.g. a simple.SimplePattern)
+    :param position: Tuple containing the (x, y) position of the top right
+      corner of the marker.
     :param size: Tuple containing the (width, height) of the marker, not
       including the border.
     :param border_width: Width of the white border region to be drawn around
