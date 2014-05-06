@@ -1,4 +1,4 @@
-plusmark
+markergen
 ========
 
 Python code to create ARToolkitPlus markers.
