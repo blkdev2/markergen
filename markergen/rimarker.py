@@ -5,7 +5,8 @@ def draw_marker(ri, pattern, position, size, border_width):
     """Draws a marker to a RenderMan interface stream.
     
     :param ri: cgkit RI interface object.
-    :param pattern: The pattern object (e.g. a simple.SimplePattern)
+    :param pattern: The pattern object (e.g. an artkp.SimplePattern)
+    :param position: Tuple containing the (x, z) position of the marker corner.
     :param size: Tuple containing the (width, height) of the marker, not
       including the border.
     :param border_width: Width of the white border region to be drawn around
@@ -67,7 +68,7 @@ def _draw_pattern(ri, pattern, position, size):
 
 if __name__ == "__main__":
     import cgkit.cri
-    import simple
+    from . import artkp
     
     ri = cgkit.cri.loadRI("ri")
     cgkit.cri.importRINames(ri, globals())
@@ -81,7 +82,7 @@ if __name__ == "__main__":
     RiWorldBegin()
     RiLightSource("pointlight", "from", (3, 0, -3), intensity=20)
     RiSurface("matte")
-    draw_marker(ri, simple.SimplePattern(0), (-0.5, -0.5), (1.0, 1.0), 0.1)
+    draw_marker(ri, artkp.SimplePattern(0), (-0.5, -0.5), (1.0, 1.0), 0.1)
     RiWorldEnd()
     RiEnd()
 

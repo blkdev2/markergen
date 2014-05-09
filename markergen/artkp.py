@@ -32,14 +32,6 @@ full_mask = np.int64(0)
 for i in range(4):
     full_mask |= xor_masks[i] << pos_mask[i]
 
-# Array with indices for 90° CW rotated grid
-rotate_90 = [30, 24, 18, 12,  6,  0,
-             31, 25, 19, 13,  7,  1,
-             32, 26, 20, 14,  8,  2,
-             33, 27, 21, 15,  9,  3,
-             34, 28, 22, 16, 10,  4,
-             35, 29, 23, 17, 11,  5]
-
 class SimplePattern:
     def __init__(self, id_number):
         self.shape = (6, 6)

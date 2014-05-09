@@ -1,10 +1,8 @@
-import simple
-
 def draw_marker(pdf, pattern, position, size, border_width):
     """Draws an ARToolkitPlus marker into an FPDF document.
     
     :param pdf: The FPDF document.
-    :param pattern: The pattern object (e.g. a simple.SimplePattern)
+    :param pattern: The pattern object (e.g. an artkp.SimplePattern)
     :param position: Tuple containing the (x, y) position of the top right
       corner of the marker.
     :param size: Tuple containing the (width, height) of the marker, not
